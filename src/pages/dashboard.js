@@ -11,9 +11,14 @@ import Sidebar from "../components/Sidebar";
 import ConnectionLine from "../components/ConnectionLine";
 import CustomEdge from "../components/CustomEdge";
 import "../styles/dnd.css";
+import ColorSelectorNode from "../nodes/DropDuplicates";
 
 const edgeTypes = {
   custom: CustomEdge,
+};
+
+const nodeTypes = {
+  selectorNode: ColorSelectorNode,
 };
 
 const initialElements = [
@@ -25,7 +30,7 @@ const initialElements = [
   },
   {
     id: "2",
-    type: "default",
+    type: "selectorNode",
     position: { x: 297, y: 162 },
     data: { label: "default node" },
   },
@@ -40,6 +45,8 @@ const initialElements = [
     type: "output",
     position: { x: 632, y: 359 },
     data: { label: "output node" },
+    animated: true,
+    style: { stroke: "white" },
   },
   {
     source: "1",
@@ -111,16 +118,16 @@ const DnDFlow = () => {
   }, [elements]);
 
   const addScript = async () => {
-    await fetch(`http://127.0.0.1:8000/api/`, {
-      method: "POST",
+    await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
+      method: 'POST',
       headers: { "Content-Type": "application/json" },
-      data: JSON.stringify(elements),
-    });
-    console.log("POST SUCCESSFUL", JSON.stringify(elements));
+      body: JSON.stringify(elements)
+    })
   };
   const getScripts = async () => {
-    let response = await fetch(`http://127.0.0.1:8000/api/`);
-    console.log(response);
+    let response = await fetch(`http://127.0.0.1:8000/api/scripts/`);
+    let data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -139,6 +146,7 @@ const DnDFlow = () => {
             onConnect={onConnect}
             onElementsRemove={onElementsRemove}
             edgeTypes={edgeTypes}
+            nodeTypes={nodeTypes}
             connectionLineComponent={ConnectionLine}
             onLoad={onLoad}
             onDrop={onDrop}
