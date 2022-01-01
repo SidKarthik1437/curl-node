@@ -11,65 +11,30 @@ import Sidebar from "../components/Sidebar";
 import ConnectionLine from "../components/ConnectionLine";
 import CustomEdge from "../components/CustomEdge";
 import "../styles/dnd.css";
-import ColorSelectorNode from "../nodes/DropDuplicates";
+import * as NODES from "../nodes";
 
 const edgeTypes = {
   custom: CustomEdge,
 };
 
 const nodeTypes = {
-  selectorNode: ColorSelectorNode,
+  Start: NODES.Start,
+  Stop: NODES.Stop,
+  DropDuplicates: NODES.DropDuplicates,
 };
 
 const initialElements = [
   {
     id: "1",
-    type: "input",
-    data: { label: "input node" },
-    position: { x: 250, y: 5 },
+    type: "Start",
+    data: { label: "Start node" },
+    position: { x: 100, y: 400 },
   },
   {
     id: "2",
-    type: "selectorNode",
-    position: { x: 297, y: 162 },
-    data: { label: "default node" },
-  },
-  {
-    id: "3",
-    type: "default",
-    position: { x: 147, y: 339 },
-    data: { label: "default node" },
-  },
-  {
-    id: "4",
-    type: "output",
-    position: { x: 632, y: 359 },
-    data: { label: "output node" },
-    animated: true,
-    style: { stroke: "white" },
-  },
-  {
-    source: "1",
-    sourceHandle: null,
-    target: "2",
-    targetHandle: null,
-    id: "reactflow__edge-1null-2null",
-    animated: true,
-    style: { stroke: "white" },
-  },
-  {
-    source: "2",
-    sourceHandle: null,
-    target: "3",
-    targetHandle: null,
-    id: "reactflow__edge-dndnode_0null-3null",
-  },
-  {
-    source: "3",
-    sourceHandle: null,
-    target: "4",
-    targetHandle: null,
-    id: "reactflow__edge-3null-4null",
+    type: "Stop",
+    data: { label: "Stop node" },
+    position: { x: 1500, y: 400 },
   },
 ];
 
@@ -79,7 +44,7 @@ const getId = () => `dndnode_${id++}`;
 const DnDFlow = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [elements, setElements] = useState(initialElements);
+
   const onEdgeUpdate = (oldEdge, newConnection) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
@@ -113,33 +78,18 @@ const DnDFlow = () => {
     setElements((es) => es.concat(newNode));
   };
 
-  useEffect(() => {
-    console.log(JSON.stringify(elements));
-  }, [elements]);
+    const [elements, setElements] = useState(initialElements);
+  let getNodes = async () => {
+    let response = (await fetch("/api/scripts/")).json();
+    return (response);
+    // setElements(data);
+  };
 
-  const addScript = async () => {
-    await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(elements)
-    })
-  };
-  const getScripts = async () => {
-    let response = await fetch(`http://127.0.0.1:8000/api/scripts/`);
-    let data = await response.json();
-    console.log(data);
-  };
 
   return (
     <div className="dndflow w-full h-screen bg-gray-500">
       <ReactFlowProvider>
-        <Sidebar />
-        <button type="button" className="bg-blue-500 text-white rounded" onClick={addScript}>
-          POST
-        </button>
-        <button type="button" className="bg-blue-500 text-white rounded" onClick={getScripts}>
-          GET
-        </button>
+        <Sidebar elements={elements} />
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
           <ReactFlow
             elements={elements}
@@ -148,6 +98,7 @@ const DnDFlow = () => {
             edgeTypes={edgeTypes}
             nodeTypes={nodeTypes}
             connectionLineComponent={ConnectionLine}
+            connectionLineType={"custom"}
             onLoad={onLoad}
             onDrop={onDrop}
             onDragOver={onDragOver}
