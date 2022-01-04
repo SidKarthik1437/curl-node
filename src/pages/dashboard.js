@@ -84,6 +84,12 @@ const DnDFlow = () => {
     return (response);
     // setElements(data);
   };
+  const ReactRendererFlow = () => {
+    const [elements, setelements] = useState(initialElements)
+    const onElementsRemove = (elementsToRemove) =>
+    setelements((els) => removeElements(elementsToRemove, els));
+        
+    }
 
 
   return (
@@ -103,6 +109,7 @@ const DnDFlow = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onEdgeUpdate={onEdgeUpdate}
+            deleteKeyCode={46}
             // key="edges"
           >
             <Controls />
