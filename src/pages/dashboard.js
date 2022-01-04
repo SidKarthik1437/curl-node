@@ -21,25 +21,27 @@ const nodeTypes = {
   Start: NODES.Start,
   Stop: NODES.Stop,
   DropDuplicates: NODES.DropDuplicates,
+  Add: NODES.Add,
+  Integer: NODES.Integer,
 };
 
 const initialElements = [
   {
-    id: "1",
+    id: "start",
     type: "Start",
     data: { label: "Start node" },
     position: { x: 100, y: 400 },
   },
   {
-    id: "2",
+    id: "stop",
     type: "Stop",
     data: { label: "Stop node" },
-    position: { x: 1500, y: 400 },
+    position: { x: 500, y: 400 },
   },
 ];
 
 let id = 0;
-const getId = () => `dndnode_${id++}`;
+const getId = () => `${id++}`;
 
 const DnDFlow = () => {
   const reactFlowWrapper = useRef(null);
@@ -64,6 +66,7 @@ const DnDFlow = () => {
 
     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
     const type = event.dataTransfer.getData("application/reactflow");
+
     const position = reactFlowInstance.project({
       x: event.clientX - reactFlowBounds.left,
       y: event.clientY - reactFlowBounds.top,
@@ -72,7 +75,10 @@ const DnDFlow = () => {
       id: getId(),
       type,
       position,
-      data: { label: `${type} node` },
+      data: {
+        label: `${type} node`,
+        // a: a, b: b
+      },
     };
 
     setElements((es) => es.concat(newNode));
@@ -85,7 +91,10 @@ const DnDFlow = () => {
     // setElements(data);
   };
 
-
+  useEffect(() => {
+    console.log(elements)
+    
+  }, [elements])
   return (
     <div className="dndflow w-full h-screen bg-gray-500">
       <ReactFlowProvider>
@@ -103,6 +112,7 @@ const DnDFlow = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onEdgeUpdate={onEdgeUpdate}
+            elementsSelectable={true}
             // key="edges"
           >
             <Controls />

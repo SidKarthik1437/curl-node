@@ -27,6 +27,25 @@ function Sidebar({ elements }) {
       <div className="flex flex-col h-full">
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">
+            Basic
+          </span>
+          <div
+            className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "Add")}
+            draggable
+          >
+            Add
+          </div>
+          <div
+            className="Integer border bg-blue-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "Integer")}
+            draggable
+          >
+            Integer
+          </div>
+        </div>
+        <div className="mb-2 h-auto">
+          <span className="font-semibold uppercase tracking-widest">
             Data Cleaning
           </span>
           <div
