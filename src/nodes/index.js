@@ -12,6 +12,8 @@ import Divide from "../nodes/Divide";
 import Float from "../nodes/Float";
 import Char from "../nodes/Char";
 import String from "../nodes/String";
+import StandardScaler from "../nodes/StandardScaler";
+import FitTransform from "./FitTransform";
 
 export {
   Start,
@@ -28,4 +30,6 @@ export {
   Float,
   Char,
   String,
+  StandardScaler,
+  FitTransform,
 };

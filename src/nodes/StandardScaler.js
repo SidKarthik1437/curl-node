@@ -39,7 +39,7 @@ export default memo(({ data, isConnectable }) => {
           isConnectable={isConnectable}
           id="flow-out"
         />
-        <div className="text-center" style={{marginLeft: "12px", marginRight: "12px"}}>Fit Transform</div>
+        <div className="text-center" style={{marginLeft: "12px", marginRight: "12px"}}>Standard Scaler</div>
       </div>
 
     
@@ -162,7 +162,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="ml-12  text-sm"style={{marginLeft:'50px'}} >output </span>
+            <span className="ml-12  text-sm"style={{marginLeft:'63px'}} >output </span>
          </div>
          </div>
        

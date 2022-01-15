@@ -131,6 +131,20 @@ function Sidebar({ queue, data }) {
           >
             Is NUll
           </div>
+          <div
+            className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "StandardScaler")}
+            draggable
+          >
+            Standard Scaler
+          </div>
+          <div
+            className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "FitTransform")}
+            draggable
+          >
+            Fit Transform
+          </div>
         </div>
         <div>
           <span className="font-semibold uppercase tracking-widest">

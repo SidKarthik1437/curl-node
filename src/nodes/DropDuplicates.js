@@ -163,7 +163,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="mr-4 ml-3 text-sm">Output </span>
+            <span className="mr-4 ml-3 text-sm">output </span>
           </div>
         </div>
       </div>

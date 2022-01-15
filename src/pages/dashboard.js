@@ -34,6 +34,8 @@ const nodeTypes = {
   Float: NODES.Float,
   Char: NODES.Char,
   String: NODES.String,
+  StandardScaler: NODES.StandardScaler,
+  FitTransform: NODES.FitTransform,
 };
 
 store.setState("data", []);
