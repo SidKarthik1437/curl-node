@@ -36,6 +36,11 @@ const nodeTypes = {
   String: NODES.String,
   StandardScaler: NODES.StandardScaler,
   FitTransform: NODES.FitTransform,
+  LabelEncoder: NODES.LabelEncoder,
+  LogisticRegression: NODES.LogisticRegression,
+  DecisionTree: NODES.DecisionTree,
+  KNN: NODES.KNN,
+  RandomForest: NODES.RandomForest,
 };
 
 store.setState("data", []);

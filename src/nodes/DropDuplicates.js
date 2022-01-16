@@ -118,7 +118,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="c"
             />
-            <span className="ml-4 text-sm">ignore index </span>
+            <span className="ml-4 text-sm">inplace</span>
           </div>
           <div className="h-5">
             <Handle
@@ -137,7 +137,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="d"
             />
-            <span className="ml-4 text-sm">inplace </span>
+            <span className="ml-4 text-sm">ignore index </span>
           </div>
         </div>
         <div

@@ -13,8 +13,12 @@ import Float from "../nodes/Float";
 import Char from "../nodes/Char";
 import String from "../nodes/String";
 import StandardScaler from "../nodes/StandardScaler";
-import FitTransform from "./FitTransform";
-
+import FitTransform from "../nodes/FitTransform";
+import LabelEncoder from "../nodes/LabelEncoder";
+import LogisticRegression from "../nodes/LogisticRegression";
+import DecisionTree from "../nodes/DecisionTree";
+import RandomForest from "../nodes/RandomForest";
+import KNN from "../nodes/KNN";
 export {
   Start,
   Stop,
@@ -32,4 +36,9 @@ export {
   String,
   StandardScaler,
   FitTransform,
+  LabelEncoder,
+  LogisticRegression,
+  DecisionTree,
+  RandomForest,
+  KNN,
 };
