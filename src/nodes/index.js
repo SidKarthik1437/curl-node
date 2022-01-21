@@ -19,6 +19,8 @@ import LogisticRegression from "../nodes/LogisticRegression";
 import DecisionTree from "../nodes/DecisionTree";
 import RandomForest from "../nodes/RandomForest";
 import KNN from "../nodes/KNN";
+import Bool from "../nodes/Bool";
+
 export {
   Start,
   Stop,
@@ -41,4 +43,5 @@ export {
   DecisionTree,
   RandomForest,
   KNN,
+  Bool
 };

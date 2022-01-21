@@ -41,6 +41,8 @@ const nodeTypes = {
   DecisionTree: NODES.DecisionTree,
   KNN: NODES.KNN,
   RandomForest: NODES.RandomForest,
+  Bool: NODES.Bool,
+
 };
 
 store.setState("data", []);
@@ -55,7 +57,7 @@ const initialElements = [
   {
     id: "stop",
     type: "Stop",
-    data: { label: "Stop node" },
+    data: { label: "Stop node"},
     position: { x: 500, y: 400 },
   },
 ];
@@ -67,7 +69,7 @@ let node = {
   'MULTIPLY': 'operation',
   'DIVIDE': 'operation',
 }
-const getId = (type) => `${node}_${type}_${id++}`;
+const getId = (type) => `${type}_${id++}`;
 
 const DnDFlow = () => {
   const reactFlowWrapper = useRef(null);
