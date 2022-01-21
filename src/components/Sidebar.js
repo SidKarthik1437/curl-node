@@ -141,14 +141,14 @@ function Sidebar({ queue, data }) {
             Is NUll
           </div>
           <div
-            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "StandardScaler")}
             draggable
           >
             Standard Scaler
           </div>
           <div
-            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "FitTransform")}
             draggable
           >
@@ -157,7 +157,7 @@ function Sidebar({ queue, data }) {
           
 
           <div
-            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "LabelEncoder")}
             draggable
           >

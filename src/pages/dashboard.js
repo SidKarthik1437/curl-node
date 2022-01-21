@@ -86,7 +86,15 @@ const DnDFlow = () => {
   const onConnect = (event) => {
     const fromNode = event.source.split("__")[0];
     const toNode = event.target.split("__")[0];
-    setQueue(queue.concat(toNode));
+    let flag = false
+    for (let i = 0; i < queue.length; i++){
+      if (queue[i] == toNode) {
+        flag = true
+      }
+    }
+    if (!flag) {
+      setQueue(queue.concat(toNode));
+    }
     //prevent self-linking
     if (fromNode === toNode) return;
     //prevent reduntant links
