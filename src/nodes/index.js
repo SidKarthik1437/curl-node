@@ -12,6 +12,13 @@ import Divide from "../nodes/Divide";
 import Float from "../nodes/Float";
 import Char from "../nodes/Char";
 import String from "../nodes/String";
+import StandardScaler from "../nodes/StandardScaler";
+import FitTransform from "../nodes/FitTransform";
+import LabelEncoder from "../nodes/LabelEncoder";
+import LogisticRegression from "../nodes/LogisticRegression";
+import DecisionTree from "../nodes/DecisionTree";
+import RandomForest from "../nodes/RandomForest";
+import KNN from "../nodes/KNN";
 import Bool from "../nodes/Bool";
 
 export {
@@ -28,6 +35,13 @@ export {
   Divide,
   Float,
   Char,
-    String,
+  String,
+  StandardScaler,
+  FitTransform,
+  LabelEncoder,
+  LogisticRegression,
+  DecisionTree,
+  RandomForest,
+  KNN,
   Bool
 };

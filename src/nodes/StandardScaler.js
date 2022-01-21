@@ -5,7 +5,7 @@ import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
   return (
-    <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
+    <div className="bg-purple-600 w-62 h-32 pt-2 rounded text-white" style={{height: '95px'}}>
       <div style={{ display: "block" }}>
         <Handle
           type="target"
@@ -39,12 +39,11 @@ export default memo(({ data, isConnectable }) => {
           isConnectable={isConnectable}
           id="flow-out"
         />
-        <div className="text-center">Drop Duplicates</div>
+        <div className="text-center" style={{marginLeft: "12px", marginRight: "12px"}}>Standard Scaler</div>
       </div>
 
-      <div style={{ display: "flex" }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className="h-5">
+    
+          <div className="h-5" style={{ display: "flex", flexDirection: "column" ,justifyContent:"center"}}>
             <Handle
               type="target"
               position="left"
@@ -55,15 +54,15 @@ export default memo(({ data, isConnectable }) => {
 
                 borderRadius: "5px 0px 5px 5px",
                 transform: "rotate(45deg)",
-                top: 40,
+                top: 59 ,
               }}
               onConnect={(params) => console.log("handle onConnect", params)}
               isConnectable={isConnectable}
               id="a"
             />
-            <span className="m-0 p-0 ml-4 text-sm">data </span>
+            <span className="m-0 p-0 ml-4 mt-10 text-sm" >data </span>
           </div>
-          <div className="h-5">
+           {/* <div className="h-5">
             <Handle
               type="target"
               position="left"
@@ -118,7 +117,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="c"
             />
-            <span className="ml-4 text-sm">inplace</span>
+            <span className="ml-4 text-sm">ignore index </span>
           </div>
           <div className="h-5">
             <Handle
@@ -137,17 +136,16 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="d"
             />
-            <span className="ml-4 text-sm">ignore index </span>
-          </div>
-        </div>
-        <div
-          style={{
+            <span className="ml-4 text-sm">inplace </span>
+          </div> */}
+          
+            
+        
+        <div className="h-5 "style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-          }}
-        >
-          <div className="h-5 ">
+          }}>
             <Handle
               type="source"
               position="right"
@@ -158,16 +156,17 @@ export default memo(({ data, isConnectable }) => {
 
                 borderRadius: "5px 5px 5px 0px",
                 transform: "rotate(45deg)",
-                top: 78,
+                top: 58,
+                marginRight:0,
               }}
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="mr-4 ml-3 text-sm">output </span>
-          </div>
-        </div>
-      </div>
-    </div>
+            <span className="ml-12  text-sm"style={{marginLeft:'63px'}} >output </span>
+         </div>
+         </div>
+       
+    
   );
 });
 

@@ -42,9 +42,9 @@ function Sidebar({ queue, data }) {
 
   return (
     <aside className="flex flex-col justify-between h-full">
-      <div className="description">
+      {/* <div className="description">
         You can drag these nodes to the pane on the right.
-      </div>
+      </div> */}
       <div className="flex flex-col h-full">
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">Basic</span>
@@ -139,6 +139,66 @@ function Sidebar({ queue, data }) {
             draggable
           >
             Is NUll
+          </div>
+          <div
+            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "StandardScaler")}
+            draggable
+          >
+            Standard Scaler
+          </div>
+          <div
+            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "FitTransform")}
+            draggable
+          >
+            Fit Transform
+          </div>
+          
+
+          <div
+            className="Start border bg-purple-300 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "LabelEncoder")}
+            draggable
+          >
+            Label Encoder
+          </div>
+
+
+        </div>
+
+
+        <div className="mb-2 h-auto">
+          <span className="font-semibold uppercase tracking-widest">
+            ML MODELS
+          </span>
+          <div
+            className="Start border bg-pink-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "LogisticRegression")}
+            draggable
+          >
+            Logistic Regression
+          </div>
+          <div
+            className="Start border bg-pink-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "DecisionTree")}
+            draggable
+          >
+            Decision TREE
+          </div>
+          <div
+            className="Start border bg-pink-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "RandomForest")}
+            draggable
+          >
+            Random Forest
+          </div>
+          <div
+            className="Start border bg-pink-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "KNN")}
+            draggable
+          >
+            KNN
           </div>
         </div>
         <div>
