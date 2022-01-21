@@ -5,14 +5,14 @@ function Sidebar({ queue, data }) {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
   };
-  const [scripts, setScripts] = useState([])
-  const [sid, setSid] = useState()
+  const [scripts, setScripts] = useState([]);
+  const [sid, setSid] = useState();
 
   const addScript = async () => {
     await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({queue: queue, data: data}),
+      body: JSON.stringify({ queue: queue, data: data }),
       // body: JSON.stringify({
       //   queue: ["start", "Add", "stop"],
       //   data: { add_0: [10, 15] },
@@ -27,16 +27,18 @@ function Sidebar({ queue, data }) {
   };
 
   const exeScript = async () => {
-    let response = await fetch(`http://127.0.0.1:8000/api/scripts/${sid}/execute/`);
+    let response = await fetch(
+      `http://127.0.0.1:8000/api/scripts/${sid}/execute/`
+    );
     let data = await response.json();
     console.log(data);
   };
 
   useEffect(() => {
-    console.log('script', scripts[0]?.id)
-    console.log(sid)
-    setSid(scripts[0]?.id)
-  },[scripts])
+    console.log("script", scripts[0]?.id);
+    console.log(sid);
+    setSid(scripts[0]?.id);
+  }, [scripts]);
 
   return (
     <aside className="flex flex-col justify-between h-full">
@@ -100,6 +102,13 @@ function Sidebar({ queue, data }) {
           </div>
           <div
             className="Integer border bg-blue-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "Char")}
+            draggable
+          >
+            Bool
+          </div>
+          <div
+            className="Integer border bg-blue-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "String")}
             draggable
           >
@@ -160,7 +169,7 @@ function Sidebar({ queue, data }) {
         </div>
       </div>
       <div className="flex flex-col w-full h-auto">
-        <div className='mb-2'>
+        <div className="mb-2">
           <button
             type="button"
             className="w-full bg-blue-500 text-white rounded h-10 p-2 cursor-pointer"
@@ -169,7 +178,7 @@ function Sidebar({ queue, data }) {
             Execute
           </button>
         </div>
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
           <button
             type="button"
             className="bg-blue-500 text-white rounded w-20 h-10 p-2 cursor-pointer"

@@ -12,6 +12,7 @@ import Divide from "../nodes/Divide";
 import Float from "../nodes/Float";
 import Char from "../nodes/Char";
 import String from "../nodes/String";
+import Bool from "../nodes/Bool";
 
 export {
   Start,
@@ -27,5 +28,6 @@ export {
   Divide,
   Float,
   Char,
-  String,
+    String,
+  Bool
 };
