@@ -1,11 +1,14 @@
 import React, { memo, useContext, useEffect, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
+import { useRecoilState } from "recoil";
 import { useGlobalState } from "state-pool";
+import { dataStore } from "../atoms/dataAtom";
 
 export default memo(({ data, isConnectable }) => {
   const [num, setnum] = useState(0);
-  const [iData, setiData] = useGlobalState("data");
+  // const [iData, setiData] = useGlobalState("data");
+  const [iData, setiData] = useRecoilState(dataStore);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -17,8 +20,12 @@ export default memo(({ data, isConnectable }) => {
     setiData(iData.concat(num));
     console.log("idata", iData);
   };
+  // const handleChange = () => {
+    
+  // }
+  // const setVal = () => {
 
-  
+  // }
 
   return (
     <div className="bg-blue-500 p-2 w-auto h-auto rounded text-white tracking-wider">

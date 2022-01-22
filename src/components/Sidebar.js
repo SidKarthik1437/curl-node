@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import '../styles/misc.css'
 
 function Sidebar({ queue, data }) {
   const onDragStart = (event, nodeType) => {
@@ -41,15 +42,15 @@ function Sidebar({ queue, data }) {
   }, [scripts]);
 
   return (
-    <aside className="flex flex-col justify-between h-full">
+    <aside className="flex flex-col justify-between h-screen">
       {/* <div className="description">
         You can drag these nodes to the pane on the right.
       </div> */}
-      <div className="flex flex-col h-full">
+      <div className="sidebar flex flex-col overflow-y-scroll">
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">Basic</span>
           <div
-            className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Add border bg-green-600 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "Add")}
             draggable
           >
@@ -154,7 +155,6 @@ function Sidebar({ queue, data }) {
           >
             Fit Transform
           </div>
-          
 
           <div
             className="Start border bg-purple-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
@@ -163,10 +163,7 @@ function Sidebar({ queue, data }) {
           >
             Label Encoder
           </div>
-
-
         </div>
-
 
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">
@@ -184,7 +181,7 @@ function Sidebar({ queue, data }) {
             onDragStart={(event) => onDragStart(event, "DecisionTree")}
             draggable
           >
-            Decision TREE
+            Decision Tree
           </div>
           <div
             className="Start border bg-pink-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
@@ -241,7 +238,7 @@ function Sidebar({ queue, data }) {
         <div className="flex gap-2">
           <button
             type="button"
-            className="bg-blue-500 text-white rounded w-20 h-10 p-2 cursor-pointer"
+            className="bg-blue-500 text-white rounded w-20 h-10  p-2cursor-pointer"
             onClick={addScript}
           >
             POST

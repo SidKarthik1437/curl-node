@@ -5,7 +5,7 @@ import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
   return (
-    <div className="bg-pink-500 w-62 h-32 pt-2 rounded text-white" style={{height: '95px'}}>
+    <div className="bg-pink-600 w-62 h-32 pt-2 rounded text-white" style={{height: '95px'}}>
       <div style={{ display: "block" }}>
         <Handle
           type="target"
@@ -84,7 +84,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="ml-12  text-sm"style={{marginLeft:'50px'}} >output </span>
+            <span className="ml-12  text-sm"style={{marginLeft:'95px'}} >output </span>
          </div>
          </div>
   );

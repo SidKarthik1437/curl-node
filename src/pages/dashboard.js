@@ -7,6 +7,7 @@ import ReactFlow, {
   updateEdge,
 } from "react-flow-renderer";
 import { store, useGlobalState } from "state-pool";
+import { useRecoilState } from "recoil";
 
 import Sidebar from "../components/Sidebar";
 import ConnectionLine from "../components/ConnectionLine";
@@ -14,6 +15,7 @@ import CustomEdge from "../components/CustomEdge";
 import "../styles/dnd.css";
 import * as NODES from "../nodes";
 import DataContext from "../context/Data";
+import { dataStore } from "../atoms/dataAtom";
 
 const edgeTypes = {
   custom: CustomEdge,
@@ -42,10 +44,9 @@ const nodeTypes = {
   KNN: NODES.KNN,
   RandomForest: NODES.RandomForest,
   Bool: NODES.Bool,
-
 };
 
-store.setState("data", []);
+// store.setState("data", []);
 
 const initialElements = [
   {
@@ -54,28 +55,29 @@ const initialElements = [
     data: { label: "Start node" },
     position: { x: 100, y: 400 },
   },
-  {
-    id: "stop",
-    type: "Stop",
-    data: { label: "Stop node"},
-    position: { x: 500, y: 400 },
-  },
+  // {
+  //   id: "stop",
+  //   type: "Stop",
+  //   data: { label: "Stop node" },
+  //   position: { x: 500, y: 400 },
+  // },
 ];
 
 let id = 0;
 let node = {
-  'ADD': 'operation',
-  'SUBTRACT': 'operation',
-  'MULTIPLY': 'operation',
-  'DIVIDE': 'operation',
-}
+  ADD: "operation",
+  SUBTRACT: "operation",
+  MULTIPLY: "operation",
+  DIVIDE: "operation",
+};
 const getId = (type) => `${type}_${id++}`;
 
 const DnDFlow = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [queue, setQueue] = useState(["start"]);
-  const [data, setData, updateData] = useGlobalState("data");
+  // const [data, setData, updateData] = useGlobalState("data");
+  const [data, setData] = useRecoilState(dataStore);
 
   console.log(data);
 
@@ -86,10 +88,10 @@ const DnDFlow = () => {
   const onConnect = (event) => {
     const fromNode = event.source.split("__")[0];
     const toNode = event.target.split("__")[0];
-    let flag = false
-    for (let i = 0; i < queue.length; i++){
+    let flag = false;
+    for (let i = 0; i < queue.length; i++) {
       if (queue[i] == toNode) {
-        flag = true
+        flag = true;
       }
     }
     if (!flag) {
@@ -108,10 +110,12 @@ const DnDFlow = () => {
       return;
     setElements((els) => addEdge(event, els));
     if (fromNode.split("_")[0] == "input") {
-      // setData(data.concat({ fromNode: fromNode, value: data }));
+      setData(data.concat({ fromNode: fromNode, value: data }));
       // setData(data.concat());
+      // setData(data.push({ fromNode: fromNode, value: data }));
     }
     console.log(fromNode.split("_")[0]);
+    // console.log(data.concat({ fromNode: fromNode, value: data }));
   };
 
   const onElementsRemove = (elementsToRemove) =>
@@ -144,6 +148,7 @@ const DnDFlow = () => {
       type,
       position,
       data: {
+        id: getId(type),
         label: `${data} node`,
         type: `${type}`,
         value: `value`,
@@ -157,7 +162,7 @@ const DnDFlow = () => {
   let getNodes = async () => {
     let response = (await fetch("/api/scripts/")).json();
     return response;
-    // setElements(data);
+    setElements(data);
   };
 
   useEffect(() => {
@@ -166,9 +171,12 @@ const DnDFlow = () => {
   return (
     <DataContext.Provider value={queue}>
       <div className="dndflow w-full h-screen bg-gray-500">
-        <ReactFlowProvider>
+        <ReactFlowProvider className="overflow-hidden">
           <Sidebar queue={queue} data={data} />
-          <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+          <div
+            className="reactflow-wrapper overflow-hidden"
+            ref={reactFlowWrapper}
+          >
             <ReactFlow
               elements={elements}
               onConnect={onConnect}
@@ -182,6 +190,7 @@ const DnDFlow = () => {
               onDragOver={onDragOver}
               onEdgeUpdate={onEdgeUpdate}
               deleteKeyCode={46}
+              className="overflow-hidden"
             >
               <Controls />
             </ReactFlow>

@@ -10,7 +10,7 @@ const notfound = lazy(() => import("./pages/not-found"));
 function App() {
   let data = [];
   return (
-    <div className="App w-full h-screen">
+    <div className="App w-full h-screen overflow-hidden">
       <Router>
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>
