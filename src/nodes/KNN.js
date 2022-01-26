@@ -60,7 +60,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="a"
             />
-            <span className="m-0 p-0 ml-4 mt-10 text-sm" >data </span>
+            <span className="m-0 p-0 ml-4 mt-10 text-sm" style={{marginLeft: "13px"}}>data </span>
           </div>
            
         <div className="h-5 "style={{

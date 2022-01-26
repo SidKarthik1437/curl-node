@@ -9,6 +9,11 @@ export default memo(({ data, isConnectable }) => {
   const [num, setnum] = useState(0);
   // const [iData, setiData] = useGlobalState("data");
   const [iData, setiData] = useRecoilState(dataStore);
+  
+
+  // let d = {};
+  // d[data.id] = num;
+  // console.log(d);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -17,15 +22,19 @@ export default memo(({ data, isConnectable }) => {
   };
   const setVal = (event) => {
     event.preventDefault();
-    setiData(iData.concat(num));
+    
+    // setiData((state) => ({
+    //   ...state,
+      
+    // }));
+    setiData((state) => ({
+      ...state, 
+      [data.id]: num
+    }))
     console.log("idata", iData);
   };
-  // const handleChange = () => {
-    
-  // }
-  // const setVal = () => {
 
-  // }
+  
 
   return (
     <div className="bg-blue-500 p-2 w-auto h-auto rounded text-white tracking-wider">

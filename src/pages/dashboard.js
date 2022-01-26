@@ -12,6 +12,8 @@ import { useRecoilState } from "recoil";
 import Sidebar from "../components/Sidebar";
 import ConnectionLine from "../components/ConnectionLine";
 import CustomEdge from "../components/CustomEdge";
+import Terminal from "../components/Terminal";
+
 import "../styles/dnd.css";
 import * as NODES from "../nodes";
 import DataContext from "../context/Data";
@@ -167,14 +169,16 @@ const DnDFlow = () => {
 
   useEffect(() => {
     console.log(data);
+    console.log("elements", elements);
   }, [elements]);
   return (
     <DataContext.Provider value={queue}>
-      <div className="dndflow w-full h-screen bg-gray-500">
-        <ReactFlowProvider className="overflow-hidden">
-          <Sidebar queue={queue} data={data} />
+      <div className="dndflow w-full h-screen bg-gray-500 select-none">
+        <ReactFlowProvider className="overflow-hidden flex flex-col">
+          <Sidebar queue={queue} data={data} elements={elements} />
+
           <div
-            className="reactflow-wrapper overflow-hidden"
+            className="reactflow-wrapper overflow-hidden flex flex-col"
             ref={reactFlowWrapper}
           >
             <ReactFlow
@@ -190,11 +194,12 @@ const DnDFlow = () => {
               onDragOver={onDragOver}
               onEdgeUpdate={onEdgeUpdate}
               deleteKeyCode={46}
-              className="overflow-hidden"
+              className="overflow-hidden absolute"
             >
               <Controls />
             </ReactFlow>
           </div>
+          {/* <Terminal /> */}
         </ReactFlowProvider>
       </div>
     </DataContext.Provider>

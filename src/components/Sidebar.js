@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../styles/misc.css'
 
-function Sidebar({ queue, data }) {
+function Sidebar({ queue, data, elements }) {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
@@ -13,7 +13,7 @@ function Sidebar({ queue, data }) {
     await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ queue: queue, data: data }),
+      body: JSON.stringify({elements: elements, data: data}),
       // body: JSON.stringify({
       //   queue: ["start", "Add", "stop"],
       //   data: { add_0: [10, 15] },
@@ -38,6 +38,7 @@ function Sidebar({ queue, data }) {
   useEffect(() => {
     console.log("script", scripts[0]?.id);
     console.log(sid);
+    console.log('elements', elements);
     setSid(scripts[0]?.id);
   }, [scripts]);
 
@@ -50,7 +51,7 @@ function Sidebar({ queue, data }) {
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">Basic</span>
           <div
-            className="Add border bg-green-600 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "Add")}
             draggable
           >

@@ -84,7 +84,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="ml-12  text-sm"style={{marginLeft:'50px'}} >output </span>
+            <span className="ml-12  text-sm"style={{marginLeft:'54px'}} >output </span>
          </div>
          </div>
   );

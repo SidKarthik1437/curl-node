@@ -3,6 +3,8 @@ import React, { memo } from "react";
 import { Handle } from "react-flow-renderer";
 
 
+
+
 export default memo(({ data, isConnectable }) => {
   return (
     <div className="bg-pink-600 w-62 h-32 pt-2 rounded text-white" style={{height: '95px'}}>
@@ -60,7 +62,7 @@ export default memo(({ data, isConnectable }) => {
               isConnectable={isConnectable}
               id="a"
             />
-            <span className="m-0 p-0 ml-4 mt-10 text-sm" >data </span>
+            <span className="m-0 p-0 ml-4 mt-10 text-sm" style={{marginLeft:'14px'}}>data </span>
           </div>
            
         <div className="h-5 "style={{
