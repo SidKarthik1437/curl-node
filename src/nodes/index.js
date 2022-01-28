@@ -3,7 +3,7 @@ import Start from "../nodes/Start";
 import Stop from "../nodes/Stop";
 import Add from "../nodes/Add";
 import Integer from "../nodes/Integer";
-import File from "./File";
+import File from "../nodes/File";
 import Output from "../nodes/Output";
 import IsNull from "../nodes/IsNull";
 import Sub from "../nodes/Sub";

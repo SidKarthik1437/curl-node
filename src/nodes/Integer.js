@@ -1,8 +1,7 @@
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 import { useRecoilState } from "recoil";
-import { useGlobalState } from "state-pool";
 import { dataStore } from "../atoms/dataAtom";
 
 export default memo(({ data, isConnectable }) => {

@@ -1,7 +1,7 @@
 .dndflow {
     flex-direction: column;
     display: flex;
-    height: 135%;
+    height: 100%;
 }
 
 .dndflow aside {

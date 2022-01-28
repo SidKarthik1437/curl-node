@@ -1,22 +1,34 @@
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { memo,useState } from "react";
 
 import { Handle } from "react-flow-renderer";
-import { useGlobalState } from "state-pool";
+import { useRecoilState } from "recoil";
+import { dataStore } from "../atoms/dataAtom";
 
 export default memo(({ data, isConnectable }) => {
-  const [bool, setbool] = useState(0);
-  const [iData, setiData] = useGlobalState("data");
+  const [bool, setBool] = useState(false);
+  // const [iData, setiData] = useGlobalState("data");
+  const [iData, setiData] = useRecoilState(dataStore);
+
+  // let d = {};
+  // d[data.id] = num;
+  // console.log(d);
+  // console.log(data.id)
 
   const handleChange = (event) => {
     event.preventDefault();
-    setbool(event.target.value);
+    setBool(event.target.value);
     console.log("idata", iData);
   };
   const setVal = (event) => {
     event.preventDefault();
-    setiData(iData.concat(bool));
+
+    setiData((state) => ({
+      ...state,
+      [data.id]: bool,
+    }));
     console.log("idata", iData);
   };
+
 
   return (
     <div className="bg-blue-500 p-2 w-auto h-auto rounded text-white tracking-wider">
@@ -39,7 +51,7 @@ export default memo(({ data, isConnectable }) => {
       <div className="flex flex-col">
         <input
           className="w-20 text-black pt-2 rounded text-center"
-          type="radio"
+          type="checkbox"
           onChange={(event) => handleChange(event)}
           value={bool}
         />

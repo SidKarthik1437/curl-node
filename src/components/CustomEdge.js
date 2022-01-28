@@ -1,6 +1,6 @@
-import { FC } from "react";
+// import { FC } from "react";
 import {
-  EdgeProps,
+  // EdgeProps,
   getBezierPath,
   getMarkerEnd,
   EdgeText,
