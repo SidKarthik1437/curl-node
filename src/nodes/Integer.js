@@ -14,7 +14,7 @@ export default memo(({ data, isConnectable }) => {
   // let d = {};
   // d[data.id] = num;
   // console.log(d);
-  console.log(data.id)
+  // console.log(data.id)
 
   const handleChange = (event) => {
     event.preventDefault();
