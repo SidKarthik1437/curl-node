@@ -14,6 +14,7 @@ export default memo(({ data, isConnectable }) => {
   // let d = {};
   // d[data.id] = num;
   // console.log(d);
+  console.log(data.id)
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -23,10 +24,6 @@ export default memo(({ data, isConnectable }) => {
   const setVal = (event) => {
     event.preventDefault();
     
-    // setiData((state) => ({
-    //   ...state,
-      
-    // }));
     setiData((state) => ({
       ...state, 
       [data.id]: num
@@ -58,8 +55,8 @@ export default memo(({ data, isConnectable }) => {
         <input
           className="w-20 text-black pt-2 rounded text-center"
           type="number"
-          onChange={(event) => handleChange(event)}
           value={num}
+          onChange={(event) => handleChange(event)}
         />
         <button
           className="bg-black w-20 h-10 text-white mt-2 rounded text-center"

@@ -7,22 +7,25 @@ export default memo(({ data, isConnectable }) => {
   return (
     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
       <div style={{ display: "block" }}>
-        <Handle
-          type="target"
-          position="left"
-          style={{
-            background: "white",
-            width: 10,
-            height: 10,
+        <div>
+          <Handle
+            type="target"
+            position="left"
+            style={{
+              background: "white",
+              width: 10,
+              height: 10,
 
-            borderRadius: "5px 0px 5px 5px",
-            transform: "rotate(45deg)",
-            top: 15,
-          }}
-          onConnect={(params) => console.log("handle onConnect", params)}
-          isConnectable={isConnectable}
-          id="flow-in"
-        />
+              borderRadius: "5px 0px 5px 5px",
+              transform: "rotate(45deg)",
+              top: 15,
+            }}
+            onConnect={(params) => console.log("handle onConnect", params)}
+            isConnectable={isConnectable}
+            id="flow-in"
+          />
+        </div>
+        <div></div>
         <Handle
           type="source"
           position="right"
