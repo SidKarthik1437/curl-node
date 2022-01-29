@@ -6,13 +6,11 @@ import ReactFlow, {
   Controls,
   updateEdge,
 } from "react-flow-renderer";
-import { store, useGlobalState } from "state-pool";
 import { useRecoilState } from "recoil";
 
 import Sidebar from "../components/Sidebar";
 import ConnectionLine from "../components/ConnectionLine";
 import CustomEdge from "../components/CustomEdge";
-import Terminal from "../components/Terminal";
 
 import "../styles/dnd.css";
 import * as NODES from "../nodes";
@@ -32,9 +30,9 @@ const nodeTypes = {
   File: NODES.File,
   Output: NODES.Output,
   Sub: NODES.Sub,
-  Multiply: NODES.Multiply,
+  Mul: NODES.Multiply,
   IsNull: NODES.IsNull,
-  Divide: NODES.Divide,
+  Div: NODES.Divide,
   Float: NODES.Float,
   Char: NODES.Char,
   String: NODES.String,
@@ -66,12 +64,12 @@ const initialElements = [
 ];
 
 let id = 0;
-let node = {
-  ADD: "operation",
-  SUBTRACT: "operation",
-  MULTIPLY: "operation",
-  DIVIDE: "operation",
-};
+// let node = {
+//   ADD: "operation",
+//   SUBTRACT: "operation",
+//   MULTIPLY: "operation",
+//   DIVIDE: "operation",
+// };
 const getId = (type) => `${type}_${id++}`;
 
 const DnDFlow = () => {
@@ -92,7 +90,7 @@ const DnDFlow = () => {
     const toNode = event.target.split("__")[0];
     let flag = false;
     for (let i = 0; i < queue.length; i++) {
-      if (queue[i] == toNode) {
+      if (queue[i] === toNode) {
         flag = true;
       }
     }
@@ -111,7 +109,7 @@ const DnDFlow = () => {
     )
       return;
     setElements((els) => addEdge(event, els));
-    if (fromNode.split("_")[0] == "input") {
+    if (fromNode.split("_")[0] === "input") {
       setData(data.concat({ fromNode: fromNode, value: data }));
       // setData(data.concat());
       // setData(data.push({ fromNode: fromNode, value: data }));
@@ -162,14 +160,13 @@ const DnDFlow = () => {
   };
 
   const [elements, setElements] = useState(initialElements);
-  let getNodes = async () => {
-    let response = (await fetch("/api/scripts/")).json();
-    return response;
-    setElements(data);
-  };
+  // let getNodes = async () => {
+  //   let response = (await fetch("/api/scripts/")).json();
+  //   return response;
+  //   setElements(data);
+  // };
 
   useEffect(() => {
-    console.log(data);
     console.log("elements", elements);
   }, [elements]);
   return (

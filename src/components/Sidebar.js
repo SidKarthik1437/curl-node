@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import '../styles/misc.css'
+import "../styles/misc.css";
+import { useRecoilState } from "recoil";
+import { Output } from "../atoms/outputAtom";
 
 function Sidebar({ queue, data, elements }) {
   const onDragStart = (event, nodeType) => {
@@ -8,12 +10,13 @@ function Sidebar({ queue, data, elements }) {
   };
   const [scripts, setScripts] = useState([]);
   const [sid, setSid] = useState();
+  const [op, setOp] = useRecoilState(Output);
 
   const addScript = async () => {
     await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({elements: elements, data: data}),
+      body: JSON.stringify({ elements: elements, data: data }),
       // body: JSON.stringify({
       //   queue: ["start", "Add", "stop"],
       //   data: { add_0: [10, 15] },
@@ -32,21 +35,19 @@ function Sidebar({ queue, data, elements }) {
       `http://127.0.0.1:8000/api/scripts/${sid}/execute/`
     );
     let data = await response.json();
-    console.log(data);
+    setOp(data);
+    console.log(op);
   };
 
   useEffect(() => {
     console.log("script", scripts[0]?.id);
-    console.log(sid);
-    console.log('elements', elements);
+    // console.log(sid);
+    // console.log('elements', elements);
     setSid(scripts[0]?.id);
   }, [scripts]);
 
   return (
     <aside className="flex flex-col justify-between h-screen">
-      {/* <div className="description">
-        You can drag these nodes to the pane on the right.
-      </div> */}
       <div className="sidebar flex flex-col overflow-y-scroll">
         <div className="mb-2 h-auto">
           <span className="font-semibold uppercase tracking-widest">Basic</span>
@@ -58,22 +59,22 @@ function Sidebar({ queue, data, elements }) {
             Add
           </div>
           <div
-            className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            className="Sub border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
             onDragStart={(event) => onDragStart(event, "Sub")}
             draggable
           >
             Sub
           </div>
           <div
-            className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
-            onDragStart={(event) => onDragStart(event, "Multiply")}
+            className="Mul border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
+            onDragStart={(event) => onDragStart(event, "Mul")}
             draggable
           >
             Multiply
           </div>
           <div
             className="Add border bg-green-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
-            onDragStart={(event) => onDragStart(event, "Divide")}
+            onDragStart={(event) => onDragStart(event, "Div")}
             draggable
           >
             Divide
@@ -104,7 +105,7 @@ function Sidebar({ queue, data, elements }) {
           </div>
           <div
             className="Integer border bg-blue-500 rounded text-white p-2 font-semibold tracking-widest uppercase"
-            onDragStart={(event) => onDragStart(event, "Char")}
+            onDragStart={(event) => onDragStart(event, "Bool")}
             draggable
           >
             Bool

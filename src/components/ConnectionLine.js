@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({
+export default function ConnectionLine({
   sourceX,
   sourceY,
   sourcePosition,
@@ -9,7 +9,7 @@ export default ({
   targetPosition,
   connectionLineType,
   connectionLineStyle,
-}) => {
+}){
   return (
     <g>
       <path

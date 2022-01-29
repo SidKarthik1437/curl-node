@@ -1,11 +1,15 @@
 import React, { memo } from "react";
 
 import { Handle } from "react-flow-renderer";
+import { useRecoilState } from "recoil";
+import { Output } from "../atoms/outputAtom";
 
 export default memo(({ data, isConnectable }) => {
+
+  const [op] = useRecoilState(Output);
+
   return (
     <div className="bg-gray-400 p-2 rounded text-white tracking-wide">
-      <div className="">Output</div>
       <Handle
         type="target"
         position="left"
@@ -21,6 +25,32 @@ export default memo(({ data, isConnectable }) => {
         onConnect={(params) => console.log("handle onConnect", params)}
         isConnectable={isConnectable}
       />
+      <div
+        style={{
+          width: 'auto',
+          color: "white",
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <span>
+        Output:
+        </span>
+        <span
+          style={{
+            background: "white",
+            width: 'auto',
+            padding: 5,
+            color: "black",
+            marginLeft: 2,
+            textAlign: "center",
+            borderRadius: 10,
+            flexGrow: 'true'
+          }}
+        >
+          {op}
+        </span>
+      </div>
     </div>
   );
 });

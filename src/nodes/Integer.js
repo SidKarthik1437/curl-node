@@ -1,8 +1,7 @@
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 import { useRecoilState } from "recoil";
-import { useGlobalState } from "state-pool";
 import { dataStore } from "../atoms/dataAtom";
 
 export default memo(({ data, isConnectable }) => {
@@ -14,7 +13,7 @@ export default memo(({ data, isConnectable }) => {
   // let d = {};
   // d[data.id] = num;
   // console.log(d);
-  console.log(data.id)
+  // console.log(data.id)
 
   const handleChange = (event) => {
     event.preventDefault();
