@@ -17,17 +17,14 @@ function Sidebar({ queue, data, elements }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ elements: elements, data: data }),
-      // body: JSON.stringify({
-      //   queue: ["start", "Add", "stop"],
-      //   data: { add_0: [10, 15] },
-      // }),
+      
     });
   };
   const getScripts = async () => {
     let response = await fetch(`http://127.0.0.1:8000/api/scripts/`);
     let data = await response.json();
     setScripts(data);
-    console.log(data);
+    // console.log(data);
   };
 
   const exeScript = async () => {
