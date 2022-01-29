@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 
 import { Handle } from "react-flow-renderer";
 
@@ -6,24 +6,12 @@ import { Handle } from "react-flow-renderer";
 export default memo(({ data, isConnectable }) => {
 
   // const [show, setShow] = useState([])
-  // const [hide, setHide] = useState(['subset', 'keep', 'inplace', 'inplace', 'ignore-index'])]
-  var i =0;
+  // const [hide, setHide] = useState(['subset', 'keep', 'inplace', 'inplace', 'ignore-index'])
   let show = [true, true, true, true]
-  const [display, setDisplay] =useState(show[i])
-  const [isactive, setIsactive] = useState(false);
-  
-  
-  console.log(isactive)
-  const more = () =>{
-    setIsactive(true);
-  
-  }
- 
 
 
   return (
     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
-     
       <div style={{ display: "block" }}>
         <div>
           <Handle
@@ -60,7 +48,7 @@ export default memo(({ data, isConnectable }) => {
           isConnectable={isConnectable}
           id="flow-out"
         />
-        <div className="text-center mr-4 ml-4">Drop Duplicates</div>
+        <div className="text-center">Drop Duplicates</div>
       </div>
 
       <div style={{ display: "flex" }}>
@@ -85,7 +73,7 @@ export default memo(({ data, isConnectable }) => {
             <span className="m-0 p-0 ml-4 text-sm">data </span>
           </div>
           {show[0] && (
-            <div className={`menu ${isactive ? 'show' : 'hide'}`} >
+            <div className="h-5">
               <Handle
                 type="target"
                 position="left"
@@ -106,7 +94,7 @@ export default memo(({ data, isConnectable }) => {
             </div>
           )}
           {show[1] && (
-            <div className={`menu ${isactive ? 'show' : 'hide'}`} >
+            <div className="h-5">
               <Handle
                 type="target"
                 position="left"
@@ -125,7 +113,7 @@ export default memo(({ data, isConnectable }) => {
               />
               <span className="ml-4 text-sm">keep </span>
             </div>)}
-          {show[2] && (<div className={`menu ${isactive ? 'show' : 'hide'}`} >
+          {show[2] && (<div className="h-5">
             <Handle
               type="target"
               position="left"
@@ -144,7 +132,7 @@ export default memo(({ data, isConnectable }) => {
             <span className="ml-4 text-sm">inplace</span>
           </div>
           )}
-          {show[3] && (<div className={`menu ${isactive ? 'show' : 'hide'}`} >
+          {show[3] && (<div className="h-5">
               <Handle
                 type="target"
                 position="left"
@@ -162,9 +150,6 @@ export default memo(({ data, isConnectable }) => {
                 id="d" />
               <span className="ml-4 text-sm">ignore index </span>
             </div>)}
-            <div className={`B ${isactive ? 'show' : 'hide'}`}>
-                <button className="butt text-sm"  onClick={more}>More</button>
-            </div>
         </div>
         <div
           style={{
@@ -184,14 +169,13 @@ export default memo(({ data, isConnectable }) => {
 
                 borderRadius: "5px 5px 5px 0px",
                 transform: "rotate(45deg)",
-                top: 39,
+                top: 78,
               }}
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="op mr-4 ml-3 text-sm">output </span>
+            <span className="mr-4 ml-3 text-sm">output </span>
           </div>
-         
         </div>
       </div>
     </div>
