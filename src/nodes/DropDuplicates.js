@@ -18,6 +18,9 @@ export default memo(({ data, isConnectable }) => {
     setIsactive(true);
   
   }
+  const Info=()=>{
+    alert("write node info here...")
+  }
  
 
   return (
@@ -165,6 +168,9 @@ export default memo(({ data, isConnectable }) => {
             </div>)}
             <div className={`B ${isactive ? 'show' : 'hide'}`}>
                 <button className="butt text-sm"  onClick={more}>More</button>
+            </div>
+            <div className={`B2 ${isactive ? 'show' : 'hide'}`} style={{marginTop:'79px',marginLeft:'104.5px'}}>
+                <button className="butt2 text-sm"  onClick={Info}>Info</button>
             </div>
         </div>
         <div

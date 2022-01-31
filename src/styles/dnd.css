@@ -36,7 +36,6 @@
 }
 .menu.hide{
     display: none;
-  
 }
 .menu.show{
     height: 1.25rem;
@@ -51,8 +50,8 @@
 
 .butt{
     border:1px solid white;
-    margin-left: 48px;
-    margin-top: 10px;
+    margin-left: 8px;
+    margin-top: 60px;
     border-radius: 5px;
     padding:2px;
 }
@@ -63,8 +62,24 @@
 
 .B.show{
     display: none;
+    
+}
+.B2.show{
+   display: none;
+}
+.B2{
+    position: absolute;
 }
 .h-40 {
     height: 9rem;
+}
+.butt2{
+    border:1px solid white;
+    border-radius: 5px;
+    padding:2.5px;
+}
+.butt2:hover{
+    opacity:85% ;
+    border:1px;
 }
 
