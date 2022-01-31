@@ -51,8 +51,8 @@
 
 .butt{
     border:1px solid white;
-    margin-left: 12px;
-    margin-top: 5px;
+    margin-left: 48px;
+    margin-top: 10px;
     border-radius: 5px;
     padding:2px;
 }
@@ -61,8 +61,10 @@
     border:1px;
 }
 
-
-
 .B.show{
     display: none;
 }
+.h-40 {
+    height: 9rem;
+}
+

@@ -1,28 +1,49 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 
 
 export default memo(({ data, isConnectable }) => {
+
+  // const [show, setShow] = useState([])
+  // const [hide, setHide] = useState(['subset', 'keep', 'inplace', 'inplace', 'ignore-index'])]
+  var i =0;
+  let show = [true, true, true, true]
+  const [display, setDisplay] =useState(show[i])
+  const [isactive, setIsactive] = useState(false);
+  
+  
+  console.log(isactive)
+  const more = () =>{
+    setIsactive(true);
+  
+  }
+ 
+
+
   return (
     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
+     
       <div style={{ display: "block" }}>
-        <Handle
-          type="target"
-          position="left"
-          style={{
-            background: "white",
-            width: 10,
-            height: 10,
+        <div>
+          <Handle
+            type="target"
+            position="left"
+            style={{
+              background: "white",
+              width: 10,
+              height: 10,
 
-            borderRadius: "5px 0px 5px 5px",
-            transform: "rotate(45deg)",
-            top: 15,
-          }}
-          onConnect={(params) => console.log("handle onConnect", params)}
-          isConnectable={isConnectable}
-          id="flow-in"
-        />
+              borderRadius: "5px 0px 5px 5px",
+              transform: "rotate(45deg)",
+              top: 15,
+            }}
+            onConnect={(params) => console.log("handle onConnect", params)}
+            isConnectable={isConnectable}
+            id="flow-in"
+          />
+        </div>
+        <div></div>
         <Handle
           type="source"
           position="right"
@@ -39,7 +60,7 @@ export default memo(({ data, isConnectable }) => {
           isConnectable={isConnectable}
           id="flow-out"
         />
-        <div className="text-center">Is Null</div>
+        <div className="text-center" style={{marginLeft:'48px',marginRight:'48px'}}>Is Null</div>
       </div>
 
       <div style={{ display: "flex" }}>
@@ -63,45 +84,48 @@ export default memo(({ data, isConnectable }) => {
             />
             <span className="m-0 p-0 ml-4 text-sm">isnull </span>
           </div>
-          <div className="h-5">
-            <Handle
-              type="target"
-              position="left"
-              style={{
-                background: "transparent",
-                width: 10,
-                height: 10,
+          {show[0] && (
+            <div className={`menu ${isactive ? 'show' : 'hide'}`} >
+              <Handle
+                type="target"
+                position="left"
+                style={{
+                  background: "transparent",
+                  width: 10,
+                  height: 10,
 
-                borderRadius: "5px 0px 5px 5px",
-                transform: "rotate(45deg)",
-                top: 60,
-              }}
-              onConnect={(params) => console.log("handle onConnect", params)}
-              isConnectable={isConnectable}
-              id="a"
-            />
-            <span className="m-0 p-0 ml-4 text-sm">isna </span>
-          </div>
-          <div className="h-5">
-            <Handle
-              type="target"
-              position="left"
-              style={{
-                background: "transparent",
-                width: 10,
-                height: 10,
+                  borderRadius: "5px 0px 5px 5px",
+                  transform: "rotate(45deg)",
+                  top: 60,
+                }}
+                onConnect={(params) => console.log("handle onConnect", params)}
+                isConnectable={isConnectable}
+                id="a"
+              />
+              <span className="m-0 p-0 ml-4 text-sm">isna </span>
+            </div>
+          )}
+          {show[1] && (
+            <div className={`menu ${isactive ? 'show' : 'hide'}`} >
+              <Handle
+                type="target"
+                position="left"
+                style={{
+                  background: "transparent",
+                  width: 10,
+                  height: 10,
 
-                borderRadius: "5px 0px 5px 5px",
-                transform: "rotate(45deg)",
-                top: 80,
-              }}
-              onConnect={(params) => console.log("handle onConnect", params)}
-              isConnectable={isConnectable}
-              id="b"
-            />
-            <span className="ml-4 text-sm">isna.any </span>
-          </div>
-          <div className="h-5">
+                  borderRadius: "5px 0px 5px 5px",
+                  transform: "rotate(45deg)",
+                  top: 80,
+                }}
+                onConnect={(params) => console.log("handle onConnect", params)}
+                isConnectable={isConnectable}
+                id="b"
+              />
+              <span className="ml-4 text-sm">isna.any </span>
+            </div>)}
+          {show[2] && (<div className={`menu ${isactive ? 'show' : 'hide'}`} >
             <Handle
               type="target"
               position="left"
@@ -116,29 +140,31 @@ export default memo(({ data, isConnectable }) => {
               }}
               onConnect={(params) => console.log("handle onConnect", params)}
               isConnectable={isConnectable}
-              id="c"
-            />
+              id="c" />
             <span className="ml-4 text-sm">isna.sum</span>
           </div>
-          <div className="h-5">
-            <Handle
-              type="target"
-              position="left"
-              style={{
-                background: "transparent",
-                width: 10,
-                height: 10,
+          )}
+          {show[3] && (<div className={`menu ${isactive ? 'show' : 'hide'}`} >
+              <Handle
+                type="target"
+                position="left"
+                style={{
+                  background: "transparent",
+                  width: 10,
+                  height: 10,
 
-                borderRadius: "5px 0px 5px 5px",
-                transform: "rotate(45deg)",
-                top: 120,
-              }}
-              onConnect={(params) => console.log("handle onConnect", params)}
-              isConnectable={isConnectable}
-              id="d"
-            />
-            <span className="ml-4 text-sm">isna.any.sum </span>
-          </div>
+                  borderRadius: "5px 0px 5px 5px",
+                  transform: "rotate(45deg)",
+                  top: 120,
+                }}
+                onConnect={(params) => console.log("handle onConnect", params)}
+                isConnectable={isConnectable}
+                id="d" />
+              <span className="ml-4 text-sm">isna.any.sum </span>
+            </div>)}
+            <div className={`B ${isactive ? 'show' : 'hide'}`}>
+                <button className="butt text-sm"  onClick={more}>More</button>
+            </div>
         </div>
         <div
           style={{
@@ -158,178 +184,17 @@ export default memo(({ data, isConnectable }) => {
 
                 borderRadius: "5px 5px 5px 0px",
                 transform: "rotate(45deg)",
-                top: 78,
+                top: 39,
               }}
               isConnectable={isConnectable}
               id="out"
             />
-            <span className="mr-4 ml-3 text-sm">output </span>
+            <span className="op mr-4 ml-3 text-sm">output </span>
           </div>
+         
         </div>
       </div>
     </div>
   );
 });
-
-
-
-
-
-
-
-
-// import React, { memo } from "react";
-
-// import { Handle } from "react-flow-renderer";
-
-
-// export default memo(({ data, isConnectable }) => {
-//   return (
-//     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white" >
-//       <div style={{ display: "block" }}>
-//         <Handle
-//           type="target"
-//           position="left"
-//           style={{
-//             background: "white",
-//             width: 10,
-//             height: 10,
-
-//             borderRadius: "5px 0px 5px 5px",
-//             transform: "rotate(45deg)",
-//             top: 15,
-//           }}
-//           onConnect={(params) => console.log("handle onConnect", params)}
-//           isConnectable={isConnectable}
-//           id="flow-in"
-//         />
-//         <Handle
-//           type="source"
-//           position="right"
-//           style={{
-//             background: "white",
-//             width: 10,
-//             height: 10,
-
-//             borderRadius: "5px 5px 5px 0px",
-//             transform: "rotate(45deg)",
-//             top: 15,
-//           }}
-//           onConnect={(params) => console.log("handle onConnect", params)}
-//           isConnectable={isConnectable}
-//           id="flow-out"
-//         />
-//         <div className="text-center" >IsNull</div>
-//       </div>
-
-//       <div style={{ display: "flex" }}>
-//         <div style={{ display: "flex", flexDirection: "column" }}>
-//           <div className="h-5">
-//             <Handle
-//               type="target"
-//               position="left"
-//               style={{
-//                 background: "transparent",
-//                 width: 10,
-//                 height: 10,
-
-//                 borderRadius: "5px 0px 5px 5px",
-//                 transform: "rotate(45deg)",
-//                 top: 40,
-//               }}
-//               onConnect={(params) => console.log("handle onConnect", params)}
-//               isConnectable={isConnectable}
-//               id="a"
-//             />
-//             <span className="m-0 p-0 ml-4 text-sm" style={{top: 40}}> isna() </span>
-//           </div>
-//           <div className="h-5">
-//             <Handle
-//               type="target"
-//               position="left"
-//               style={{
-//                 background: "transparent",
-//                 width: 10,
-//                 height: 10,
-
-//                 borderRadius: "5px 0px 5px 5px",
-//                 transform: "rotate(45deg)",
-//                 top: 65,
-//               }}
-//               onConnect={(params) => console.log("handle onConnect", params)}
-//               isConnectable={isConnectable}
-//               id="a"
-//             />
-//             <span className="m-0 p-0 ml-4 text-sm" style={{top: 72}}>isna().any() </span>
-//           </div>
-//           <div className="h-5">
-//             <Handle
-//               type="target"
-//               position="left"
-//               style={{
-//                 background: "transparent",
-//                 width: 10,
-//                 height: 10,
-
-//                 borderRadius: "5px 0px 5px 5px",
-//                 transform: "rotate(45deg)",
-//                 top: 90,
-//               }}
-//               onConnect={(params) => console.log("handle onConnect", params)}
-//               isConnectable={isConnectable}
-//               id="b"
-//             />
-//             <span className="ml-4 text-sm" style={{top: 90}}> isna().sum()  </span>
-//           </div>
-//           <div className="h-5">
-//             <Handle
-//               type="target"
-//               position="left"
-//               style={{
-//                 background: "transparent",
-//                 width: 10,
-//                 height: 10,
-
-//                 borderRadius: "5px 0px 5px 5px",
-//                 transform: "rotate(45deg)",
-//                 top: 115,
-//               }}
-//               onConnect={(params) => console.log("handle onConnect", params)}
-//               isConnectable={isConnectable}
-//               id="c"
-//             />
-//             <span className="ml-4 mb-3 text-sm" style={{top: 115}}>isna().any().sum() </span>
-//           </div>
-          
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             alignItems: "center",
-//             justifyContent: "center",
-//           }}
-//         >
-//           <div className="h-5 ">
-//             <Handle
-//               type="source"
-//               position="right"
-//               style={{
-//                 background: "transparent",
-//                 width: 10,
-//                 height: 10,
-
-//                 borderRadius: "5px 5px 5px 0px",
-//                 transform: "rotate(45deg)",
-//                 top: 78,
-//               }}
-//               isConnectable={isConnectable}
-//               id="out"
-//             />
-//             <span className="mr-4 ml-3 text-sm">Output </span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// });
 

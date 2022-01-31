@@ -20,8 +20,9 @@ export default memo(({ data, isConnectable }) => {
   }
  
 
-
   return (
+  <div className={`H ${isactive ? 'show' : 'hide'}`}>
+
     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
      
       <div style={{ display: "block" }}>
@@ -191,9 +192,9 @@ export default memo(({ data, isConnectable }) => {
             />
             <span className="op mr-4 ml-3 text-sm">output </span>
           </div>
-         
         </div>
       </div>
+    </div>
     </div>
   );
 });
