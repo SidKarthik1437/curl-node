@@ -2,32 +2,29 @@ import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 
-
 export default memo(({ data, isConnectable }) => {
 
   // const [show, setShow] = useState([])
   // const [hide, setHide] = useState(['subset', 'keep', 'inplace', 'inplace', 'ignore-index'])]
-  var i =0;
+  // var i =0;
   let show = [true, true, true, true]
-  const [display, setDisplay] =useState(show[i])
+  // const [display, setDisplay] =useState(show[i])
   const [isactive, setIsactive] = useState(false);
-  
+  // const [isactive1, setIsactive1]= useState(false);
   
   console.log(isactive)
   const more = () =>{
     setIsactive(true);
-  
   }
   const Info=()=>{
-    alert("write node info here...")
+    // setIsactive1(true);
   }
- 
+
 
   return (
   <div className={`H ${isactive ? 'show' : 'hide'}`}>
 
     <div className="bg-purple-600 w-62 h-40 pt-2 rounded text-white">
-     
       <div style={{ display: "block" }}>
         <div>
           <Handle
@@ -55,7 +52,6 @@ export default memo(({ data, isConnectable }) => {
             background: "white",
             width: 10,
             height: 10,
-
             borderRadius: "5px 5px 5px 0px",
             transform: "rotate(45deg)",
             top: 15,
@@ -66,7 +62,6 @@ export default memo(({ data, isConnectable }) => {
         />
         <div className="text-center mr-4 ml-4">Drop Duplicates</div>
       </div>
-
       <div style={{ display: "flex" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="h-5">
@@ -156,7 +151,6 @@ export default memo(({ data, isConnectable }) => {
                   background: "transparent",
                   width: 10,
                   height: 10,
-
                   borderRadius: "5px 0px 5px 5px",
                   transform: "rotate(45deg)",
                   top: 120,
@@ -169,8 +163,8 @@ export default memo(({ data, isConnectable }) => {
             <div className={`B ${isactive ? 'show' : 'hide'}`}>
                 <button className="butt text-sm"  onClick={more}>More</button>
             </div>
-            <div className={`B2 ${isactive ? 'show' : 'hide'}`} style={{marginTop:'79px',marginLeft:'104.5px'}}>
-                <button className="butt2 text-sm"  onClick={Info}>Info</button>
+            <div className={`B2 ${isactive ? 'show' : 'hide'}`}>
+                <button className="butt2 text-sm" onClick={Info}>Info</button>
             </div>
         </div>
         <div
