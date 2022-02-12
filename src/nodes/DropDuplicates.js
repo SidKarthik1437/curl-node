@@ -1,6 +1,7 @@
 import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
+import { IoInformationSharp } from "react-icons/io5";
 
 export default memo(({ data, isConnectable }) => {
 
@@ -16,9 +17,7 @@ export default memo(({ data, isConnectable }) => {
   const more = () =>{
     setIsactive(true);
   }
-  const Info=()=>{
-    // setIsactive1(true);
-  }
+
 
 
   return (
@@ -160,12 +159,12 @@ export default memo(({ data, isConnectable }) => {
                 id="d" />
               <span className="ml-4 text-sm">ignore index </span>
             </div>)}
-            <div className={`B ${isactive ? 'show' : 'hide'}`}>
+            <div className={`B ${isactive ? 'show' : 'hide'}`} >
                 <button className="butt text-sm"  onClick={more}>More</button>
-            </div>
-            <div className={`B2 ${isactive ? 'show' : 'hide'}`}>
-                <button className="butt2 text-sm" onClick={Info}>Info</button>
-            </div>
+                <button className='tooltip'><IoInformationSharp/>
+                <span className='tooltiptext'>  Removing entire rows that have same values.</span>
+                </button>
+            </div>  
         </div>
         <div
           style={{
