@@ -5,6 +5,7 @@ import ReactFlow, {
   removeElements,
   Controls,
   updateEdge,
+  Background,
 } from "react-flow-renderer";
 import { useRecoilState } from "recoil";
 
@@ -49,12 +50,12 @@ const nodeTypes = {
 // store.setState("data", []);
 
 const initialElements = [
-  {
-    id: "start",
-    type: "Start",
-    data: { label: "Start node" },
-    position: { x: 100, y: 400 },
-  },
+  // {
+  //   id: "start",
+  //   type: "Start",
+  //   data: { label: "Start node" },
+  //   position: { x: 100, y: 400 },
+  // },
   // {
   //   id: "stop",
   //   type: "Stop",
@@ -192,9 +193,12 @@ const DnDFlow = () => {
               onDragOver={onDragOver}
               onEdgeUpdate={onEdgeUpdate}
               deleteKeyCode={46}
+              multiSelectionKeyCode={"shift"}
+              snapGrid={[15, 15]}
               className="overflow-hidden absolute"
             >
               <Controls />
+              <Background color="#aaa" gap={20} />
             </ReactFlow>
           </div>
           {/* <Terminal /> */}
