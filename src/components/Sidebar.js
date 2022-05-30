@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/misc.css";
 import { useRecoilState } from "recoil";
 import { Output } from "../atoms/outputAtom";
@@ -9,15 +9,33 @@ function Sidebar({ queue, data, elements }) {
     event.dataTransfer.effectAllowed = "move";
   };
   const [scripts, setScripts] = useState([]);
+  const [file, setFile] = useState([]);
+  const filePickerRef = useRef(null)
   const [sid, setSid] = useState();
   const [op, setOp] = useRecoilState(Output);
+
+  // axios.post(url, form_data, {
+  //     headers: {
+  //       'content-type': 'multipart/form-data'
+  //     }
+  //   })
+  //       .then(res => {
+  //         console.log(res.data);
+  //       })
+  //       .catch(err => console.log(err))
+  // };
+
+  // const docRef = await fetch("http://127.0.0.1:8000/api/scripts/create/", {
+  //   method: "POST",
+  //   headers: { "Content-Type": '"multipart/form-data"' },
+  //   body: '',
+  // });
 
   const addScript = async () => {
     await fetch(`http://127.0.0.1:8000/api/scripts/create/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ elements: elements, data: data }),
-      
     });
   };
   const getScripts = async () => {
