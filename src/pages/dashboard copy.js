@@ -161,8 +161,8 @@ const DnDFlow = () => {
 
     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
     const type = event.dataTransfer.getData("application/reactflow");
-    const data = event.dataTransfer.getData("text");
-    const file = event.dataTransfer.File;
+    const data = event.dataTransfer.getData("File");
+    const file = event.dataTransfer.getData("File");
 
     console.log("e", data);
 
@@ -181,7 +181,6 @@ const DnDFlow = () => {
         label: `${data} node`,
         type: `${type}`,
         value: `value`,
-        file: event.file,
       },
     };
 
@@ -213,25 +212,19 @@ const DnDFlow = () => {
                   left: anchorPoint.x,
                 }}
               >
-                <li>
-                  <button>Share to..</button>
-                </li>
-                <li>
-                  <button>Cut</button>
-                </li>
-                <li>
-                  <button>Copy</button>
-                </li>
-                <li>
-                  <button>Paste</button>
-                </li>
+                <button>Share to..</button>
+
+                <button>Cut</button>
+
+                <button>Copy</button>
+
+                <button>Paste</button>
+
                 <hr className="divider" />
-                <li>
-                  <button>Refresh</button>
-                </li>
-                <li>
-                  <button>Exit</button>
-                </li>
+
+                <button>Refresh</button>
+
+                <button>Exit</button>
               </ul>
             ) : (
               <> </>

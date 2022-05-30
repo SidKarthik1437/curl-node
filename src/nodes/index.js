@@ -20,6 +20,7 @@ import DecisionTree from "../nodes/DecisionTree";
 import RandomForest from "../nodes/RandomForest";
 import KNN from "../nodes/KNN";
 import Bool from "../nodes/Bool";
+import FileRef from "../nodes/FileRef";
 
 export {
   Start,
@@ -28,6 +29,7 @@ export {
   Add,
   Integer,
   File,
+  FileRef,
   Output,
   IsNull,
   Sub,
@@ -43,5 +45,5 @@ export {
   DecisionTree,
   RandomForest,
   KNN,
-  Bool
+  Bool,
 };
