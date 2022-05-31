@@ -8,6 +8,8 @@ import ReactFlow, {
   Background,
 } from "react-flow-renderer";
 import { useRecoilState } from "recoil";
+import Menu from "../components/Menu";
+import { useContextMenu } from "../hooks/useContextMenu";
 
 import Sidebar from "../components/Sidebar";
 import VarBar from "../components/VarBar";
@@ -93,24 +95,9 @@ const DnDFlow = () => {
   // const onConnect = (params) => setElements((els) => addEdge(params, els));
 
   //!right click!
-  const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
-  const [show, setShow] = useState(false);
 
-  const handleContextMenu = useCallback(
-    (event) => {
-      event.preventDefault();
-      setAnchorPoint({ x: event.pageX, y: event.pageY });
-      setShow(true);
-    },
-    [setAnchorPoint, setShow]
-  );
+  
 
-  useEffect(() => {
-    document.addEventListener("contextmenu", handleContextMenu);
-    return () => {
-      document.removeEventListener("contextmenu", handleContextMenu);
-    };
-  });
 
   const onConnect = (event) => {
     const fromNode = event.source.split("__")[0];
@@ -162,9 +149,9 @@ const DnDFlow = () => {
     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
     const type = event.dataTransfer.getData("application/reactflow");
     const data = event.dataTransfer.getData("text");
-    const file = event.dataTransfer.File;
+    // const file = event.dataTransfer.File;
 
-    console.log("e", data);
+    console.log("e", event);
 
     const position = reactFlowInstance.project({
       x: event.clientX - reactFlowBounds.left,
@@ -180,8 +167,8 @@ const DnDFlow = () => {
         id: id,
         label: `${data} node`,
         type: `${type}`,
-        value: `value`,
-        file: event.file,
+        value: currentFile,
+        // file: event.file,
       },
     };
 
@@ -204,39 +191,7 @@ const DnDFlow = () => {
         <ReactFlowProvider className="overflow-hidden flex flex-col">
           <Sidebar queue={queue} data={data} elements={elements} />
 
-          <div className="app">
-            {show ? (
-              <ul
-                className="menu"
-                style={{
-                  top: anchorPoint.y,
-                  left: anchorPoint.x,
-                }}
-              >
-                <li>
-                  <button>Share to..</button>
-                </li>
-                <li>
-                  <button>Cut</button>
-                </li>
-                <li>
-                  <button>Copy</button>
-                </li>
-                <li>
-                  <button>Paste</button>
-                </li>
-                <hr className="divider" />
-                <li>
-                  <button>Refresh</button>
-                </li>
-                <li>
-                  <button>Exit</button>
-                </li>
-              </ul>
-            ) : (
-              <> </>
-            )}
-          </div>
+          <Menu/>
 
           <div
             className="reactflow-wrapper overflow-hidden flex flex-col"

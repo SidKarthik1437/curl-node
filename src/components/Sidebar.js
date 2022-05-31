@@ -50,8 +50,8 @@ function Sidebar({ queue, data, elements }) {
       `http://127.0.0.1:8000/api/scripts/${sid}/execute/`
     );
     let data = await response.json();
-    setOp(data);
-    console.log(op);
+    // setOp(data);
+    console.log(data);
   };
 
   useEffect(() => {

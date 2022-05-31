@@ -6,7 +6,7 @@ import { Handle } from "react-flow-renderer";
 export default memo(({ data, isConnectable, name, id }) => {
   return (
     <div className="bg-blue-500 p-2 rounded text-white tracking-wider">
-      <div className="text-center">File</div>
+      <div className="text-center">{data.value.name}</div>
       <Handle
         type="source"
         position="right"
@@ -22,7 +22,9 @@ export default memo(({ data, isConnectable, name, id }) => {
         onConnect={(params) => console.log("handle onConnect", params)}
         isConnectable={isConnectable}
       />
-      <div>{name}</div>
+      <div>
+        
+      </div>
     </div>
   );
 });

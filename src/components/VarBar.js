@@ -12,7 +12,7 @@ function Sidebar({ queue, data, elements }) {
   const onDragStart = (event, nodeType, file) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.File = file;
+    // event.dataTransfer.files[0] = file;
   };
   // axios.post(url, form_data, {
   //     headers: {
